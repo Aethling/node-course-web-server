@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs'); //handlebars
 const fs =require('fs'); //file system - allows you to work with files on your computer
 
+//set the environment variable for Heroku to use.  makes the port dynamic
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -60,7 +63,7 @@ app.get('/bad', (req, res) => {
 	})
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
 	//this prints in terminal to tell where port is running
-	console.log('Server is up on port 3000');
+	console.log(`Server is up on port ${port}`);
 });
